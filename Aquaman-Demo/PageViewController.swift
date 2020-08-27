@@ -168,6 +168,7 @@ class PageViewController: AquamanPageViewController {
     }
     
     override func pageController(_ pageController: AquamanPageViewController, menuView isAdsorption: Bool) {
+        super.pageController(pageController, menuView: isAdsorption)
         menuView.backgroundColor = isAdsorption ? .red : .white
     }
     

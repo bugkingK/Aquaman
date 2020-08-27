@@ -25,7 +25,6 @@
 
 import UIKit
 import MJRefresh
-import Aquaman
 import Trident
 
 class PageViewController: AquamanPageViewController {
@@ -60,7 +59,7 @@ class PageViewController: AquamanPageViewController {
     
     private let headerView = HeaderView()
     private lazy var count = indexPath.row == 0 ? 3 : 0
-    var headerViewHeight: CGFloat = 200.0
+    var headerViewHeight2: CGFloat = 200.0
     private var menuViewHeight: CGFloat = 54.0
     
     override func viewDidLoad() {
@@ -86,7 +85,7 @@ class PageViewController: AquamanPageViewController {
             self.menuView.isHidden = false
             self.menuView.titles = ["Superman", "Batman", "Wonder Woman", "The Flash"]
             self.count = self.menuView.titles.count
-            self.headerViewHeight = 120.0
+            self.headerViewHeight2 = 120.0
             self.menuViewHeight = 54.0
             self.reloadData()
             if self.mainScrollView.mj_header?.isRefreshing ?? false {
@@ -110,7 +109,7 @@ class PageViewController: AquamanPageViewController {
     }
     
     override func headerViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
-        return headerViewHeight
+        return headerViewHeight2
     }
     
     override func numberOfViewControllers(in pageController: AquamanPageViewController) -> Int {

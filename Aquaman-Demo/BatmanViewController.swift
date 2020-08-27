@@ -24,7 +24,6 @@
 //  THE SOFTWARE.
 
 import UIKit
-import Aquaman
 
 class BatmanViewController: UIViewController, AquamanChildViewController {
     @IBOutlet weak var collectionView: UICollectionView!

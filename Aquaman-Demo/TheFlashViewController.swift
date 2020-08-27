@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Aquaman
 
 class TheFlashViewController: UIViewController, AquamanChildViewController {
     

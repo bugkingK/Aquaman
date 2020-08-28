@@ -32,6 +32,24 @@ class SupermanViewController: UIViewController, AquamanChildViewController {
         super.viewDidLoad()
         
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        if #available(iOS 10.0, *) {
+            let ref: UIRefreshControl = .init()
+            ref.addTarget(self, action: #selector(test(_:)), for: .valueChanged)
+            tableView.refreshControl = ref
+        } else {
+            // Fallback on earlier versions
+        }
+        
+    }
+    
+    @objc func test(_ refreshControl: UIRefreshControl)  {
+//        refreshControl.beginRefreshing()
+        DispatchQueue.global().asyncAfter(deadline: .now()+3) {
+            debugPrint("completion")
+            DispatchQueue.main.async {
+                refreshControl.endRefreshing()
+            }
+        }
     }
     
     func aquamanChildScrollView() -> UIScrollView {

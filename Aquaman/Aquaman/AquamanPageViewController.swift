@@ -170,10 +170,24 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
             automaticallyAdjustsScrollViewInsets = false
         }
         
+        var mainScrollViewTop: NSLayoutYAxisAnchor = topLayoutGuide.bottomAnchor
+        if let navigationView: UIView = navigationViewFor(self) {
+            let navigationViewHeight: CGFloat = navigationViewHeightFor(self)
+            mainScrollViewTop = navigationView.bottomAnchor
+            view.addSubview(navigationView)
+            navigationView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                navigationView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
+                navigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                navigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                navigationView.heightAnchor.constraint(equalToConstant: navigationViewHeight)
+            ])
+        }
+        
         view.addSubview(mainScrollView)
         let contentInset = contentInsetFor(self)
         let constraints = [
-            mainScrollView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: contentInset.top),
+            mainScrollView.topAnchor.constraint(equalTo: mainScrollViewTop, constant: contentInset.top),
             mainScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: contentInset.left),
             mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -contentInset.bottom),
             mainScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -contentInset.right)
@@ -445,6 +459,14 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
     
     open func refreshControlInTop() -> Bool {
         return true
+    }
+    
+    open func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView? {
+        return nil
+    }
+    
+    open func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
+        return 0
     }
     
     open func originIndexFor(_ pageController: AquamanPageViewController) -> Int {

@@ -136,6 +136,16 @@ class PageViewController: AquamanPageViewController {
     override func menuViewPinHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
         return 0.0
     }
+    
+    override func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView? {
+        let view: UIView = .init()
+        view.backgroundColor = .red
+        return view
+    }
+    
+    override func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
+        return 100
+    }
 
     
     override func pageController(_ pageController: AquamanPageViewController, mainScrollViewDidScroll scrollView: UIScrollView) {
@@ -157,6 +167,7 @@ class PageViewController: AquamanPageViewController {
     
     
     override func pageController(_ pageController: AquamanPageViewController, willDisplay viewController: (UIViewController & AquamanChildViewController), forItemAt index: Int) {
+        debugPrint(index)
     }
     
     override func pageController(_ pageController: AquamanPageViewController, didDisplay viewController: (UIViewController & AquamanChildViewController), forItemAt index: Int) {

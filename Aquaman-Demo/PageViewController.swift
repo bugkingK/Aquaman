@@ -105,6 +105,16 @@ class PageViewController: AquamanPageViewController {
         }
     }
     
+    override func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .systemBlue
+        return view
+    }
+    
+    override func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
+        return 52.0
+    }
+    
     override func headerViewFor(_ pageController: AquamanPageViewController) -> UIView {
         return headerView
     }
@@ -180,16 +190,16 @@ class PageViewController: AquamanPageViewController {
         menuView.checkState(animation: true)
     }
     
-    override func contentInsetFor(_ pageController: AquamanPageViewController) -> UIEdgeInsets {
-        switch indexPath.row {
-        case 0:
-            return UIEdgeInsets(top: -UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
-        case 1:
-            return .zero
-        default:
-            return .zero
-        }
-    }
+//    override func contentInsetFor(_ pageController: AquamanPageViewController) -> UIEdgeInsets {
+//        switch indexPath.row {
+//        case 0:
+//            return UIEdgeInsets(top: -UIApplication.shared.statusBarFrame.height, left: 0, bottom: 0, right: 0)
+//        case 1:
+//            return .zero
+//        default:
+//            return .zero
+//        }
+//    }
 }
 
 

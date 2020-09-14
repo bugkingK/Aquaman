@@ -144,6 +144,16 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
         }
     }
     
+    /// All ScrollView contentOffset to .zero
+    public func allScrollViewScrollToTop() {
+        containViews.forEach {
+            let vc = $0.viewController
+            let scrollView = vc?.aquamanChildScrollView()
+            scrollView?.contentOffset = .zero
+        }
+        
+        mainScrollView.contentOffset = .zero
+    }
     
     internal func obtainDataSource() {
         originIndex = originIndexFor(self)

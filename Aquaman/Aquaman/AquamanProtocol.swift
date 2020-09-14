@@ -35,6 +35,8 @@ protocol AMPageControllerDataSource: class {
     func menuViewFor(_ pageController: AquamanPageViewController) -> UIView
     func menuViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat
     func menuViewPinHeightFor(_ pageController: AquamanPageViewController) -> CGFloat
+    func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView?
+    func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat
     
     /// The index of the controller displayed by default. You should have menview ready before setting this value
     ///

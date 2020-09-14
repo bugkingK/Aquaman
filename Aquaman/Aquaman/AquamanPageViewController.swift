@@ -410,6 +410,16 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
         pageController(self, contentScrollViewDidEndScroll: contentScrollView)
     }
     
+    /// All ScrollView contentOffset to .zero
+    public func allScrollViewScrollToTop() {
+        containViews.forEach {
+            let vc = $0.viewController
+            let scrollView = vc?.aquamanChildScrollView()
+            scrollView?.contentOffset = .zero
+        }
+        
+        mainScrollView.contentOffset = .zero
+    }
     
     open func pageController(_ pageController: AquamanPageViewController, viewControllerAt index: Int) -> (UIViewController & AquamanChildViewController) {
         assertionFailure("Sub-class must implement the AMPageControllerDataSource method")

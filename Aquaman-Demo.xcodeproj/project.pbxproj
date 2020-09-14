@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3E70E23AE12A03F719A61B86 /* Pods_Aquaman_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1818A6060E4BCD927F3FAB53 /* Pods_Aquaman_Demo.framework */; };
+		85425021250F50D2004C3152 /* Aquaman.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85425020250F50D2004C3152 /* Aquaman.framework */; };
+		85425022250F50D2004C3152 /* Aquaman.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 85425020250F50D2004C3152 /* Aquaman.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF457BB323B6131F00708C49 /* Aquaman_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF457BB223B6131F00708C49 /* Aquaman_DemoUITests.swift */; };
 		DF7AC0272320BB9E002E595E /* TheFlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7AC0262320BB9E002E595E /* TheFlashViewController.swift */; };
 		DF7F9F2121E37EEB000F4317 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F9F2021E37EEB000F4317 /* AppDelegate.swift */; };
@@ -20,7 +22,6 @@
 		DF7F9F4721E37FAA000F4317 /* WonderWomanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7F9F3B21E37FA9000F4317 /* WonderWomanViewController.swift */; };
 		DF7F9F4B21E37FBB000F4317 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF7F9F4A21E37FBB000F4317 /* Main.storyboard */; };
 		DF931184250C7D5600870847 /* Trident in Frameworks */ = {isa = PBXBuildFile; productRef = DF931183250C7D5600870847 /* Trident */; };
-		DF931187250C7DDC00870847 /* Aquaman in Frameworks */ = {isa = PBXBuildFile; productRef = DF931186250C7DDC00870847 /* Aquaman */; };
 		DFD4116121E84011006E8D77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD4116021E84011006E8D77 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				85425022250F50D2004C3152 /* Aquaman.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +52,7 @@
 /* Begin PBXFileReference section */
 		1818A6060E4BCD927F3FAB53 /* Pods_Aquaman_Demo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Aquaman_Demo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A86685D0616AED53669BBEF /* Pods-Aquaman-Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aquaman-Demo.release.xcconfig"; path = "Target Support Files/Pods-Aquaman-Demo/Pods-Aquaman-Demo.release.xcconfig"; sourceTree = "<group>"; };
+		85425020250F50D2004C3152 /* Aquaman.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Aquaman.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF457BB023B6131F00708C49 /* Aquaman-DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Aquaman-DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF457BB223B6131F00708C49 /* Aquaman_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aquaman_DemoUITests.swift; sourceTree = "<group>"; };
 		DF457BB423B6131F00708C49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF931187250C7DDC00870847 /* Aquaman in Frameworks */,
+				85425021250F50D2004C3152 /* Aquaman.framework in Frameworks */,
 				3E70E23AE12A03F719A61B86 /* Pods_Aquaman_Demo.framework in Frameworks */,
 				DF931184250C7D5600870847 /* Trident in Frameworks */,
 			);
@@ -103,6 +106,7 @@
 		7E74EA9976E9E47CAA6BDD04 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				85425020250F50D2004C3152 /* Aquaman.framework */,
 				DF786CD82230CB8800DD6955 /* Aquaman.framework */,
 				1818A6060E4BCD927F3FAB53 /* Pods_Aquaman_Demo.framework */,
 			);
@@ -196,7 +200,6 @@
 			name = "Aquaman-Demo";
 			packageProductDependencies = (
 				DF931183250C7D5600870847 /* Trident */,
-				DF931186250C7DDC00870847 /* Aquaman */,
 			);
 			productName = "Aquaman-Demo";
 			productReference = DF7F9F1D21E37EEB000F4317 /* Aquaman-Demo.app */;
@@ -232,7 +235,6 @@
 			mainGroup = DF7F9F1421E37EEB000F4317;
 			packageReferences = (
 				DF931182250C7D5600870847 /* XCRemoteSwiftPackageReference "Trident" */,
-				DF931185250C7DDC00870847 /* XCRemoteSwiftPackageReference "Aquaman" */,
 			);
 			productRefGroup = DF7F9F1E21E37EEB000F4317 /* Products */;
 			projectDirPath = "";
@@ -589,14 +591,6 @@
 				minimumVersion = 0.7.0;
 			};
 		};
-		DF931185250C7DDC00870847 /* XCRemoteSwiftPackageReference "Aquaman" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bawn/Aquaman.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -604,11 +598,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DF931182250C7D5600870847 /* XCRemoteSwiftPackageReference "Trident" */;
 			productName = Trident;
-		};
-		DF931186250C7DDC00870847 /* Aquaman */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DF931185250C7DDC00870847 /* XCRemoteSwiftPackageReference "Aquaman" */;
-			productName = Aquaman;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

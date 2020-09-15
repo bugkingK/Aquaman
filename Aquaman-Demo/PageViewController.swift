@@ -105,15 +105,9 @@ class PageViewController: AquamanPageViewController {
         }
     }
     
-    override func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        return view
-    }
-    
-    override func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
-        return 52.0
-    }
+//    override func sourceViewFor(_ pageController: AquamanPageViewController) -> UIView {
+//        return view
+//    }
     
     override func headerViewFor(_ pageController: AquamanPageViewController) -> UIView {
         return headerView

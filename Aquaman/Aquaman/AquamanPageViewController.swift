@@ -27,6 +27,8 @@ import UIKit
 
 open class AquamanPageViewController: UIViewController, AMPageControllerDataSource, AMPageControllerDelegate {
     
+    @IBOutlet private(set) weak var sourceView: UIView?
+    
     public private(set) var currentViewController: (UIViewController & AquamanChildViewController)?
     public private(set) var currentIndex = 0
     internal var originIndex = 0
@@ -146,6 +148,7 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
     
     
     internal func obtainDataSource() {
+        sourceView = sourceViewFor(self)
         originIndex = originIndexFor(self)
         
         headerViewHeight = headerViewHeightFor(self)
@@ -160,7 +163,10 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
     }
     
     private func setupOriginContent() {
-        
+        guard let sourceView = sourceView else {
+            assertionFailure("Sub-class must implement the AMPageControllerDataSource method")
+            return
+        }
         mainScrollView.headerViewHeight = headerViewHeight
         mainScrollView.menuViewHeight = menuViewHeight
         if #available(iOS 13.0, *) {
@@ -169,27 +175,13 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
             automaticallyAdjustsScrollViewInsets = false
         }
         
-        var mainScrollViewTop: NSLayoutYAxisAnchor = topLayoutGuide.bottomAnchor
-        if let navigationView: UIView = navigationViewFor(self) {
-            let navigationViewHeight: CGFloat = navigationViewHeightFor(self)
-            mainScrollViewTop = navigationView.bottomAnchor
-            view.addSubview(navigationView)
-            navigationView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                navigationView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
-                navigationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                navigationView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                navigationView.heightAnchor.constraint(equalToConstant: navigationViewHeight)
-            ])
-        }
-        
-        view.addSubview(mainScrollView)
+        sourceView.addSubview(mainScrollView)
         let contentInset = contentInsetFor(self)
         let constraints = [
-            mainScrollView.topAnchor.constraint(equalTo: mainScrollViewTop, constant: contentInset.top),
-            mainScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: contentInset.left),
-            mainScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -contentInset.bottom),
-            mainScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -contentInset.right)
+            mainScrollView.topAnchor.constraint(equalTo: sourceView.topAnchor, constant: contentInset.top),
+            mainScrollView.leadingAnchor.constraint(equalTo: sourceView.leadingAnchor, constant: contentInset.left),
+            mainScrollView.bottomAnchor.constraint(equalTo: sourceView.bottomAnchor, constant: -contentInset.bottom),
+            mainScrollView.trailingAnchor.constraint(equalTo: sourceView.trailingAnchor, constant: -contentInset.right)
         ]
         mainScrollViewConstraints = constraints
         NSLayoutConstraint.activate(constraints)
@@ -440,6 +432,14 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
         return UIViewController() as! (UIViewController & AquamanChildViewController)
     }
     
+    open func sourceViewFor(_ pageController: AquamanPageViewController) -> UIView {
+        if let rootView = sourceView {
+            return rootView
+        } else {
+            return view
+        }
+    }
+    
     open func numberOfViewControllers(in pageController: AquamanPageViewController) -> Int {
         assertionFailure("Sub-class must implement the AMPageControllerDataSource method")
         return 0
@@ -462,14 +462,6 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
     
     open func menuViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
         assertionFailure("Sub-class must implement the AMPageControllerDataSource method")
-        return 0
-    }
-    
-    open func navigationViewFor(_ pageController: AquamanPageViewController) -> UIView? {
-        return nil
-    }
-    
-    open func navigationViewHeightFor(_ pageController: AquamanPageViewController) -> CGFloat {
         return 0
     }
     

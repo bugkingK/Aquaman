@@ -163,8 +163,7 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
     }
     
     private func setupOriginContent() {
-        guard let sourceView = sourceView else {
-            assertionFailure("Sub-class must implement the AMPageControllerDataSource method")
+        guard let sourceView = self.sourceView == nil ? view : self.sourceView else {
             return
         }
         mainScrollView.headerViewHeight = headerViewHeight
@@ -175,10 +174,14 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
             automaticallyAdjustsScrollViewInsets = false
         }
         
+        var mainScrollViewTop: NSLayoutYAxisAnchor = topLayoutGuide.bottomAnchor
+        if sourceView != view {
+            mainScrollViewTop = sourceView.topAnchor
+        }
         sourceView.addSubview(mainScrollView)
         let contentInset = contentInsetFor(self)
         let constraints = [
-            mainScrollView.topAnchor.constraint(equalTo: sourceView.topAnchor, constant: contentInset.top),
+            mainScrollView.topAnchor.constraint(equalTo: mainScrollViewTop, constant: contentInset.top),
             mainScrollView.leadingAnchor.constraint(equalTo: sourceView.leadingAnchor, constant: contentInset.left),
             mainScrollView.bottomAnchor.constraint(equalTo: sourceView.bottomAnchor, constant: -contentInset.bottom),
             mainScrollView.trailingAnchor.constraint(equalTo: sourceView.trailingAnchor, constant: -contentInset.right)
@@ -432,11 +435,11 @@ open class AquamanPageViewController: UIViewController, AMPageControllerDataSour
         return UIViewController() as! (UIViewController & AquamanChildViewController)
     }
     
-    open func sourceViewFor(_ pageController: AquamanPageViewController) -> UIView {
+    open func sourceViewFor(_ pageController: AquamanPageViewController) -> UIView? {
         if let rootView = sourceView {
             return rootView
         } else {
-            return view
+            return nil
         }
     }
     
